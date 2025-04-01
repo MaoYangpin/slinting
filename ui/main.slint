@@ -1,0 +1,62 @@
+import {GroupBox, LineEdit, Button, CheckBox, Slider} from "std-widgets.slint";
+
+export component MainWindow inherits Window {
+    in-out property <string> button-text: "John";
+    in-out property <float> slider-value: 0;
+    callback button-clicked() -> string;
+    title: "Main Window";
+    width: 600px;
+    height: 500px;
+
+    VerticalLayout {
+        alignment: start;
+        padding-left: 150px;
+        padding-right: 150px;
+
+        Rectangle {
+            height: 20px;
+        }
+
+        Text {
+            font-size: 27px;
+            font-weight: 700;
+            color: #6f06FF;
+            text: "Welcome to Silence";
+        }
+
+        GroupBox {
+            title: "lineEdit";
+            LineEdit {
+                placeholder-text: "enter text";
+            }
+        }
+
+        Button {
+            text: root.button-text;
+            clicked => {
+                root.button-text = root.button-clicked();
+            }
+        }
+
+        Rectangle {
+            height: 20px;
+        }
+
+        HorizontalLayout {
+            spacing: 10px;
+            CheckBox {
+                text: "Enable Feature";
+            }
+
+            Slider {
+                minimum: 0;
+                maximum: 100;
+                value <=> root.slider-value;
+            }
+
+            Text {
+                text: "Value: " + Math.round(root.slider-value);
+            }
+        }
+    }
+}
