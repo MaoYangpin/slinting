@@ -1,9 +1,10 @@
 import {GroupBox, LineEdit, Button, CheckBox, Slider} from "std-widgets.slint";
 
 export component MainWindow inherits Window {
-    in-out property <string> button-text: "John";
+    in-out property <string> button-text: "Click";
     in-out property <float> slider-value: 0;
-    callback button-clicked() -> string;
+    in-out property <string> line-edit-text: "";
+    callback button-clicked(string) -> string;
     title: "Main Window";
     width: 600px;
     height: 500px;
@@ -28,13 +29,14 @@ export component MainWindow inherits Window {
             title: "lineEdit";
             LineEdit {
                 placeholder-text: "enter text";
+                text <=> root.line-edit-text;
             }
         }
 
         Button {
             text: root.button-text;
             clicked => {
-                root.button-text = root.button-clicked();
+                root.button-text = root.button-clicked(root.line-edit-text);
             }
         }
 
