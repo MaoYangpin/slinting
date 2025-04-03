@@ -4,6 +4,7 @@ export component MainWindow inherits Window {
     in-out property <string> button-text: "Click";
     in-out property <float> slider-value: 0;
     in-out property <string> line-edit-text: "";
+    in-out property <ColorScheme> color-scheme: dark;
     callback button-clicked(string) -> string;
     title: "Main Window";
     width: 600px;
