@@ -3,10 +3,12 @@ import {GroupBox, LineEdit, Button, CheckBox, Slider} from "std-widgets.slint";
 export component MainWindow inherits Window {
     in-out property <string> button-text: "Click";
     in-out property <float> slider-value: 0;
-    in-out property <string> line-edit-text: "";
+    in-out property <string> username: "";
+    in-out property <string> password: "";
     in-out property <ColorScheme> color-scheme: dark;
     callback button-clicked(string) -> string;
     title: "Main Window";
+    default-font-family: "WenQuanYi Zen Hei";
     width: 600px;
     height: 500px;
 
@@ -27,17 +29,25 @@ export component MainWindow inherits Window {
         }
 
         GroupBox {
-            title: "lineEdit";
-            LineEdit {
-                placeholder-text: "enter text";
-                text <=> root.line-edit-text;
+            title: "Login";
+            VerticalLayout {
+                LineEdit {
+                    placeholder-text: "enter username";
+                    text <=> root.username;
+                }
+
+                LineEdit {
+                    placeholder-text: "enter password";
+                    text <=> root.password;
+                }
             }
         }
 
         Button {
+            primary: true;
             text: root.button-text;
             clicked => {
-                root.button-text = root.button-clicked(root.line-edit-text);
+                root.button-text = root.button-clicked(root.username);
             }
         }
 
@@ -48,17 +58,7 @@ export component MainWindow inherits Window {
         HorizontalLayout {
             spacing: 10px;
             CheckBox {
-                text: "Enable Feature";
-            }
-
-            Slider {
-                minimum: 0;
-                maximum: 100;
-                value <=> root.slider-value;
-            }
-
-            Text {
-                text: "Value: " + Math.round(root.slider-value);
+                text: "Enable Auto Login";
             }
         }
     }
