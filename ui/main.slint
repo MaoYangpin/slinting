@@ -8,7 +8,8 @@ export component MainWindow inherits Window {
     in-out property <ColorScheme> color-scheme: dark;
     callback button-clicked(string) -> string;
     title: "Main Window";
-    default-font-family: "WenQuanYi Zen Hei";
+    // default-font-family: "WenQuanYi Zen Hei";
+    default-font-family: "Noto-Sans";
     width: 600px;
     height: 500px;
 
@@ -32,15 +33,23 @@ export component MainWindow inherits Window {
             title: "Login";
             VerticalLayout {
                 LineEdit {
-                    placeholder-text: "enter username";
+                    placeholder-text: "username";
                     text <=> root.username;
+                }
+                
+                Rectangle {
+                    height: 10px;
                 }
 
                 LineEdit {
-                    placeholder-text: "enter password";
+                    placeholder-text: "password";
                     text <=> root.password;
                 }
             }
+        }
+
+        Rectangle {
+            height: 10px;
         }
 
         Button {
