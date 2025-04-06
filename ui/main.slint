@@ -11,7 +11,7 @@ export component MainWindow inherits Window {
     // default-font-family: "WenQuanYi Zen Hei";
     default-font-family: "Noto-Sans";
     width: 600px;
-    height: 500px;
+    height: 400px;
 
     VerticalLayout {
         alignment: start;
@@ -31,9 +31,9 @@ export component MainWindow inherits Window {
         }
 
         VerticalLayout {
-        alignment: start;
-        padding-left: 50px;
-        padding-right: 50px;
+            alignment: start;
+            padding-left: 50px;
+            padding-right: 50px;
 
             GroupBox {
                 title: "Login";
@@ -42,6 +42,11 @@ export component MainWindow inherits Window {
                     LineEdit {
                         placeholder-text: "username";
                         text <=> root.username;
+                        // accepted => {
+                        //     if (self.text != "") {
+                        //         password_field.focus();
+                        //     }
+                        // }
                     }
 
                     Rectangle {
@@ -57,7 +62,7 @@ export component MainWindow inherits Window {
             }
 
             Rectangle {
-            height: 10px;
+                height: 10px;
             }
 
             Button {
