@@ -25,49 +25,58 @@ export component MainWindow inherits Window {
         Text {
             font-size: 27px;
             font-weight: 700;
+            horizontal-alignment: TextHorizontalAlignment.center;
             color: #6f06FF;
             text: "Welcome to Silence";
         }
 
-        GroupBox {
-            title: "Login";
-            VerticalLayout {
-                LineEdit {
-                    placeholder-text: "username";
-                    text <=> root.username;
-                }
-                
-                Rectangle {
-                    height: 10px;
-                }
+        VerticalLayout {
+        alignment: start;
+        padding-left: 50px;
+        padding-right: 50px;
 
-                LineEdit {
-                    placeholder-text: "password";
-                    text <=> root.password;
+            GroupBox {
+                title: "Login";
+
+                VerticalLayout {
+                    LineEdit {
+                        placeholder-text: "username";
+                        text <=> root.username;
+                    }
+
+                    Rectangle {
+                        height: 10px;
+                    }
+
+                    LineEdit {
+                        input-type: InputType.password;
+                        placeholder-text: "password";
+                        text <=> root.password;
+                    }
                 }
             }
-        }
 
-        Rectangle {
+            Rectangle {
             height: 10px;
-        }
-
-        Button {
-            primary: true;
-            text: root.button-text;
-            clicked => {
-                root.button-text = root.button-clicked(root.username);
             }
-        }
 
-        Rectangle {
-            height: 20px;
-        }
+            Button {
+                primary: true;
+                text: root.button-text;
+                clicked => {
+                    root.button-text = root.button-clicked(root.username);
+                }
+            }
 
-        HorizontalLayout {
-            spacing: 10px;
-            CheckBox {
-                text: "Enable Auto Login";
+            Rectangle {
+                height: 20px;
+            }
+
+            HorizontalLayout {
+                spacing: 10px;
+                CheckBox {
+                    text: "Remember Login";
+                }
             }
         }
     }
