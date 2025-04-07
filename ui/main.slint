@@ -5,6 +5,7 @@ export component MainWindow inherits Window {
     in-out property <float> slider-value: 0;
     in-out property <string> username: "";
     in-out property <string> password: "";
+    in-out property <string> response: "";
     in-out property <ColorScheme> color-scheme: dark;
     callback button-clicked(string) -> string;
     title: "Main Window";
@@ -77,6 +78,17 @@ export component MainWindow inherits Window {
                 CheckBox {
                     text: "Remember Login";
                 }
+            }
+
+            Rectangle {
+                height: 20px;
+            }
+
+            Text {
+                font-size: 12px;
+                horizontal-alignment: TextHorizontalAlignment.center;
+                color: #6f0638;
+                text: root.response;
             }
         }
     }
